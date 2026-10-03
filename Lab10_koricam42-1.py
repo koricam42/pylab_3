@@ -19,4 +19,31 @@ class WordAnalyzer:
         pass
 
 def main():
-    pass
+
+
+    while True:
+        print("Word Analyzer")
+        print("Please select a file to analyze:")
+        print("1.")
+        print("2.")
+        print("3.")
+        print("4.")
+
+        print("5. Exit")
+
+        choice = input("Enter your choice (1-5): ")
+        
+        if choice == "1":
+            pass
+        elif choice == "2":
+            pass
+        elif choice == "3":
+            pass    
+        elif choice == "4":
+            pass
+        elif choice == "5":
+            pass
+        else:
+            print("Invalid choice. Please select from options 1-5.")
+            input("Press enter to return to the main menu.")
+
