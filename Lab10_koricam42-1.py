@@ -12,7 +12,11 @@ import string
 
 
 class WordAnalyzer:
+    def __init__(self, filepath):
+        self.__filepath = pathlib.Path(filepath)
+        self.__frequencies = {}
+    def process_file(self):
+        pass
 
-    pass
 def main():
     pass
