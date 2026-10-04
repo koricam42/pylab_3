@@ -18,10 +18,26 @@ class WordAnalyzer:
     def process_file(self):
         try:
             if self.__filepath.exists():
+
+                str.maketrans('', ' ', string.punctuation)
+
+                with self.__frequencies.open():
+
+                    for line in line:
+
+
+
+                        string.punctuation = string.punctuation.remove("")
+
+                    self.__frequencies = string
+                
                 pass
+                
                 return True
+            
             else:
                 raise FileNotFoundError
+        
         except FileNotFoundError:
             print(f"Error: File {self.__filepath} not found.")
             return False
