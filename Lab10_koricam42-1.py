@@ -18,13 +18,23 @@ class WordAnalyzer:
     def process_file(self):
         try:
             if self.__filepath.exists():
+                
+                translator = str.maketrans('', ' ', string.punctuation)
 
-                str.maketrans('', ' ', string.punctuation)
+                with self.__frequencies.open('r', encoding='utf-8') as file:
 
-                with self.__frequencies.open():
+                    for line in file:
 
-                    for line in line:
+                        cleaned_line = line.translate(translator).lower()
 
+                        split_line = cleaned_line.split()
+
+
+                        for word in split_line:
+                            if word in self.__frequencies:
+                                self.__frequencies[word] += 1
+                            else:
+                                self.__frequencies[word] = 1
 
 
                         string.punctuation = string.punctuation.remove("")
@@ -41,6 +51,7 @@ class WordAnalyzer:
         except FileNotFoundError:
             print(f"Error: File {self.__filepath} not found.")
             return False
+        
     def print_report(self):
         sorted_words = sorted(self.__frequencies.keys())
 
