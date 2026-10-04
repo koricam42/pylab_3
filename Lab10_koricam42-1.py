@@ -33,39 +33,32 @@ class WordAnalyzer:
             print(f'{words} :: {self.__frequencies[words]}')
 
 def main():
-
-        file_dict = {
+    file_dict = {
             '1': pathlib.Path('princess_mars.txt'),
             '2': pathlib.Path('Tarzan.txt'),
             '3': pathlib.Path('treasure_island.txt'),
             '4': pathlib.Path('monte_cristo.txt')
         }
 
-while True:
-    print("Word Analyzer")
-    print("Please select a file to analyze:")
-    print("1.")
-    print("2.")
-    print("3.")
-    print("4.")
+    while True:
+        print("Word Analyzer")
+        print("Please select a file to analyze:")
 
-    print("5. Exit")
+        for key in file_dict:
+            print(f'{key}. {file_dict[key].stem}')
+        
+        print("5. Exit")
 
-    choice = input("Enter your choice (1-5): ")
+        choice = input("Enter your choice (1-5): ")
 
-    if choice == "1":
-        pass
-    elif choice == "2":
-        pass
-    elif choice == "3":
-        pass    
-    elif choice == "4":
-        pass
-    elif choice == "5":
-        print("Goodbye.")
-        break
-    else:
-        print("Invalid choice. Please select from options 1-5.")
-        input("Press enter to return to the main menu.")
+        if choice == "5":
+            print("Goodbye.")
+            break
+        elif choice in file_dict:
+            choice_file = file_dict[choice]
+            
+        else:
+            print("Invalid choice. Please select from options 1-5.")
+            input("Press enter to return to the main menu.")
 
 main()
