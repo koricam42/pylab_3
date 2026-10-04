@@ -16,7 +16,15 @@ class WordAnalyzer:
         self.__filepath = pathlib.Path(filepath)
         self.__frequencies = {}
     def process_file(self):
-        pass
+        try:
+            if self.__filepath.exists():
+                pass
+                return True
+            else:
+                raise FileNotFoundError
+        except FileNotFoundError:
+            print(f"Error: File {self.__filepath} not found.")
+            return False
 
 def main():
 
@@ -32,7 +40,7 @@ def main():
         print("5. Exit")
 
         choice = input("Enter your choice (1-5): ")
-        
+
         if choice == "1":
             pass
         elif choice == "2":
