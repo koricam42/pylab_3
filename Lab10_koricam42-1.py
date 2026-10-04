@@ -56,8 +56,10 @@ def main():
         elif choice == "4":
             pass
         elif choice == "5":
-            pass
+            print("Goodbye.")
+            break
         else:
             print("Invalid choice. Please select from options 1-5.")
             input("Press enter to return to the main menu.")
 
+main()
