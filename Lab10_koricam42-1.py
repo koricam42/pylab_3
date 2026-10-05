@@ -19,9 +19,9 @@ class WordAnalyzer:
         try:
             if self.__filepath.exists():
                 
-                translator = str.maketrans('', ' ', string.punctuation)
+                translator = str.maketrans('', '', string.punctuation)
 
-                with self.__frequencies.open('r', encoding='utf-8') as file:
+                with self.__filepath.open('r', encoding='utf-8') as file:
 
                     for line in file:
 
@@ -35,13 +35,6 @@ class WordAnalyzer:
                                 self.__frequencies[word] += 1
                             else:
                                 self.__frequencies[word] = 1
-
-
-                        string.punctuation = string.punctuation.remove("")
-
-                    self.__frequencies = string
-                
-                pass
                 
                 return True
             
@@ -83,7 +76,10 @@ def main():
             break
         elif choice in file_dict:
             choice_file = file_dict[choice]
-            
+
+            analyzer = WordAnalyzer(choice_file)
+            if analyzer.process_file():
+                analyzer.print_report()
         else:
             print("Invalid choice. Please select from options 1-5.")
             input("Press enter to return to the main menu.")
