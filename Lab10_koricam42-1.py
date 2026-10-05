@@ -90,7 +90,7 @@ def main() -> None:
         print("Please select a file to analyze:")
 
         for key in file_dict:
-            print(f'{key}. {file_dict[key].stem}')
+            print(f'{key}. {file_dict[key].stem.replace('_', ' ').title()}')
         
         print("5. Exit")
 
