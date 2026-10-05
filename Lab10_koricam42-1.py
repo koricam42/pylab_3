@@ -50,7 +50,7 @@ class WordAnalyzer:
 
         for words in sorted_words:
 
-            print(f'{words} :: {self.__frequencies[words]}')
+            print(f'{words:<15} :: {self.__frequencies[words]}')
 
 def main():
     file_dict = {
@@ -77,11 +77,14 @@ def main():
         elif choice in file_dict:
             choice_file = file_dict[choice]
 
+            print(f"\nProcessing {choice_file.name}...")
             analyzer = WordAnalyzer(choice_file)
             if analyzer.process_file():
                 analyzer.print_report()
+
         else:
             print("Invalid choice. Please select from options 1-5.")
-            input("Press enter to return to the main menu.")
+            
+        input("\nPress enter to return to the main menu.")
 
 main()
