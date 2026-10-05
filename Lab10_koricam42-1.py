@@ -12,10 +12,29 @@ import string
 
 
 class WordAnalyzer:
-    def __init__(self, filepath):
+    """
+    Class to process text files, remove punctuation, change case, 
+    and tally the frequency of each word
+    """
+    def __init__(self, filepath: pathlib.Path | str) -> None:
+        """
+        Initalizes the WordAnalyzer with a filepath and empty dictionary for frequencies.
+
+        Args:
+            filepath (pathlib.Path | str): The path to the text file to be analyzed.
+        """
         self.__filepath = pathlib.Path(filepath)
-        self.__frequencies = {}
-    def process_file(self):
+        self.__frequencies: dict[str, int] = {}
+    def process_file(self) -> bool:
+        """
+        Reads the file, removes punctuation, converts to lowercase, and counts word frequencies.
+
+        Raises:
+            FileNotFoundError: Error that indicates that the file was not found.
+
+        Returns:
+            bool: True if the file was successfully processed, False if a FileNotFoundError occured.
+        """
         try:
             if self.__filepath.exists():
                 
@@ -45,15 +64,21 @@ class WordAnalyzer:
             print(f"Error: File {self.__filepath} not found.")
             return False
         
-    def print_report(self):
+    def print_report(self) -> None:
+        """
+        Sorts tallied words alphabetically and prints a report
+        """
         sorted_words = sorted(self.__frequencies.keys())
 
         for words in sorted_words:
 
             print(f'{words:<15} :: {self.__frequencies[words]}')
 
-def main():
-    file_dict = {
+def main() -> None:
+    """
+    Main function that displays the menu, handles user input, and executes the WordAnalyzer logic.
+    """
+    file_dict: dict[str, pathlib.Path] = {
             '1': pathlib.Path('princess_mars.txt'),
             '2': pathlib.Path('Tarzan.txt'),
             '3': pathlib.Path('treasure_island.txt'),
