@@ -40,7 +40,7 @@ class WordAnalyzer:
                 
                 translator = str.maketrans('', '', string.punctuation)
 
-                with self.__filepath.open('r', encoding='utf-8') as file:
+                with self.__filepath.open('r', encoding='utf-8-sig') as file:
 
                     for line in file:
 
@@ -90,7 +90,7 @@ def main() -> None:
         print("Please select a file to analyze:")
 
         for key in file_dict:
-            print(f'{key}. {file_dict[key].stem.replace('_', ' ').title()}')
+            print(f"{key}. {file_dict[key].stem.replace('_', ' ').title()}")
         
         print("5. Exit")
 
@@ -102,7 +102,7 @@ def main() -> None:
         elif choice in file_dict:
             choice_file = file_dict[choice]
 
-            print(f"\nProcessing {choice_file.name}...")
+            print(f"\nProcessing {choice_file.name}...\n")
             analyzer = WordAnalyzer(choice_file)
             if analyzer.process_file():
                 analyzer.print_report()
